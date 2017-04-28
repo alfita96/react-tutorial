@@ -1,0 +1,26 @@
+.Navigation {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.Navigation li {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.Navigation li:hover {
+	background-color: #61dafb;
+	cursor: pointer;
+}
+
+.navigationLink {
+	text-decoration: none;
+	color: white;
+}
