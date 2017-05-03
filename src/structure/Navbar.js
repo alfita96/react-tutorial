@@ -1,22 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Home from './pictures/Home.svg';
-import Gallery from './pictures/Gallery.svg';
-import Location from './pictures/Location.svg';
-import About from './pictures/About.svg';
+import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
+import MenuItem from 'material-ui/MenuItem';
 import './Navbar.css';
 
 class Navbar extends React.Component {
-	render() {
-		return(
-			<ul className="Navigation">
-				<Link to="/" className="navigationLink"><li><img className="navbar-icon" alt="Home" src={Home}/></li></Link>
-				<Link to="/gallery" className="navigationLink"><li><img className="navbar-icon" alt="Gallery" src={Gallery}/></li></Link>
-				<Link to="/location" className="navigationLink"><li><img className="navbar-icon" alt="Location" src={Location}/></li></Link>
-				<Link to="/about" className="navigationLink"><li><img className="navbar-icon" alt="About" src={About}/></li></Link>
-			</ul>
-		);
-	}
+
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
+  toggleDrawer = () => this.setState({ open: !this.state.open })
+
+  render() {
+    return(
+      <div>
+        <AppBar
+          title="ELK Status"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          onLeftIconButtonTouchTap={this.toggleDrawer}
+        />
+        <Drawer
+          docked={false}
+          width={300}
+          open={this.state.open}
+          onRequestChange={this.toggleDrawer}
+        >
+          <AppBar title="Menu"
+            onLeftIconButtonTouchTap={this.toggleDrawer}
+          />
+          <MenuItem primaryText="Home" containerElement={<Link to="/" />} onTouchTap={this.toggleDrawer} style={{ textAlign: 'center' }}/>
+          <MenuItem primaryText="Gallery" containerElement={<Link to="/gallery" />} onTouchTap={this.toggleDrawer} style={{ textAlign: 'center' }}/>
+          <MenuItem primaryText="Location" containerElement={<Link to="/location" />} onTouchTap={this.toggleDrawer} style={{ textAlign: 'center' }}/>
+          <MenuItem primaryText="About" containerElement={<Link to="/about" />} onTouchTap={this.toggleDrawer} style={{ textAlign: 'center' }}/>
+        </Drawer>
+      </div>
+    );
+  }
 }
 
 export default Navbar
