@@ -15,12 +15,16 @@ class Navbar extends React.Component {
   toggleDrawer = () => this.setState({ open: !this.state.open })
 
   render() {
+    const appbarStyle = {
+      textAlign: 'center'
+    }
     return(
       <div>
         <AppBar
           title="ELK Status"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.toggleDrawer}
+          style={appbarStyle}
         />
         <Drawer
           docked={false}
